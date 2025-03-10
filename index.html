@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>2048 Game</title>
+</head>
+<body>
+    <div class="game-container">
+        <div class="score-container">
+            <h1>2048</h1>
+            <div>Score: <span id="score">0</span></div>
+        </div>
+        <div class="grid-container">
+            <!-- Tiles will be generated here -->
+            <div class="game-message">
+                <p id="game-message-text"></p>
+                <div class="controls">
+                    <button class="btn" id="restart-button">Try Again</button>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="btn" id="new-game-button">New Game</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
