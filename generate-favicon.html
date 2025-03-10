@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Favicon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin: 20px 0;
+        }
+        .instructions {
+            max-width: 600px;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #8f7a66;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #9f8b77;
+        }
+    </style>
+</head>
+<body>
+    <h1>2048 Favicon Generator</h1>
+    
+    <div>
+        <canvas id="faviconCanvas" width="64" height="64"></canvas>
+    </div>
+    
+    <div>
+        <button id="downloadButton">Download Favicon</button>
+    </div>
+    
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Click the "Download Favicon" button to download the favicon as a PNG file.</li>
+            <li>Convert the PNG to ICO format using an online converter like <a href="https://convertio.co/png-ico/" target="_blank">Convertio</a> or <a href="https://favicon.io/favicon-converter/" target="_blank">favicon.io</a>.</li>
+            <li>Add the favicon to your website by placing the following line in your HTML head section:</li>
+        </ol>
+        <pre><code>&lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;</code></pre>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('faviconCanvas');
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            
+            // Draw background
+            ctx.fillStyle = '#faf8ef';
+            ctx.fillRect(0, 0, size, size);
+            
+            // Draw tile
+            ctx.fillStyle = '#edc22e'; // 2048 tile color
+            ctx.fillRect(size * 0.1, size * 0.1, size * 0.8, size * 0.8);
+            
+            // Draw text
+            ctx.fillStyle = '#f9f6f2';
+            ctx.font = 'bold ' + (size * 0.4) + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('2048', size / 2, size / 2);
+            
+            // Download functionality
+            document.getElementById('downloadButton').addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.download = 'favicon.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+    </script>
+</body>
+</html>
